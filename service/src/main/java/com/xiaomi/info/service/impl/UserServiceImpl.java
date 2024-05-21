@@ -38,13 +38,12 @@ public class UserServiceImpl extends ServiceImpl<XmUserMapper, XmUser> implement
             log.error("当前userId对应用户为空,userId={}", userId);
             throw new BasicRunException(ErrorCodes.BAD_PARAMETERS.getCode(), "当前userId不存在");
         }
-        UserResponse userResponse = UserResponse.builder()
+        return UserResponse.builder()
                 .userId(userId)
                 .userName(xmUser.getName())
                 .email(xmUser.getEmail())
                 .departmentId(xmUser.getDepartmentId())
                 .departmentName(xmUser.getDepartmentName())
                 .build();
-        return userResponse;
     }
 }
